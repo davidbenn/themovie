@@ -1,12 +1,13 @@
 <template>
   <div>
-     <h1>Sobre-nos</h1>
+      <hr>
+      &copy; Todos os direitos reservados - David Bene
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AboutView'
+  name: 'Footer',
 }
 </script>
 

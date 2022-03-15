@@ -1,12 +1,12 @@
 <template>
   <div>
-     <h1>Sobre-nos</h1>
+      <h1>Contato</h1>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'AboutView'
+  name: 'ContactView'
 }
 </script>
 
