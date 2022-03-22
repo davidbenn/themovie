@@ -3,6 +3,7 @@ import HomeView from '../views/HomeView.vue'
 import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
 import LoginView from '../views/LoginView.vue'
+import CategoryView from '../views/CategoryView.vue'
 
 const routes = [
   {
@@ -24,6 +25,11 @@ const routes = [
     path: '/login',
     name: 'login',
     component: LoginView
+  },
+  {
+    path: '/category/:id/:categoryRouteMatch',
+    name: 'category',
+    component: CategoryView 
   }
 ]
 

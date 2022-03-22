@@ -6,8 +6,8 @@
 
 <script scoped>
 
-import NavHeader from '@/components/NavHeader.vue'
-import NavFooter from '@/components/NavFooter.vue'
+import NavHeader from '@/components/layouts/NavHeader.vue'
+import NavFooter from '@/components/layouts/NavFooter.vue'
 
 export default {
 
@@ -20,5 +20,11 @@ export default {
 </script>
 
 <style>
+html{
+  overflow-x: hidden !important;
+}
 
+body{
+   background-color: #F3F3F3;
+}
 </style>

@@ -9,7 +9,6 @@
           <br>
 
           <router-link to="/login">Entrar</router-link> | 
-          <router-link to="/register">Criar uma conta</router-link>
       </ul>
       <hr>
   </div>

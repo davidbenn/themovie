@@ -1,17 +1,24 @@
 <template>
   <div class="home">
-    <list-movie />
+    <categories-navbar />
+    <painel-categories />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import ListMovie from '@/components/ListMovie.vue'
+import CategoriesNavbar from '@/components/CategoriesNavbar.vue'
+import PainelCategories from '@/components/PainelCategories.vue'
 
 export default {
   name: 'HomeView',
   components: {
-    ListMovie
+    CategoriesNavbar,
+    PainelCategories
   }
 }
 </script>
+
+<style>
+  
+</style>
