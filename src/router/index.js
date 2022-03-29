@@ -4,6 +4,7 @@ import AboutView from '../views/AboutView.vue'
 import ContactView from '../views/ContactView.vue'
 import LoginView from '../views/LoginView.vue'
 import CategoryView from '../views/CategoryView.vue'
+import MovieView from '../views/MovieView.vue'
 
 // LOADING
 import '../../node_modules/nprogress/nprogress.css'
@@ -34,6 +35,11 @@ const routes = [
     path: '/category/:id/:categoryRouteMatch',
     name: 'category',
     component: CategoryView 
+  },
+  {
+    path: '/movie/:id/:movieRouteMatch',
+    name: 'movie',
+    component: MovieView
   }
 ]
 

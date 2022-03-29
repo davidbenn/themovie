@@ -6,7 +6,8 @@
         <input @click.stop="searchQuery.length >= 1 && !isSearch ? isSearch = true : !isSearch" type="text" v-model.trim="searchQuery" class="block p-2 pl-10 w-full text-gray-900 bg-gray-50 rounded-lg border border-gray-300 sm:text-sm focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Qual título você procura?">
 
         <div @click.stop id="searchbox" v-show="isSearch" class="flex flex-col max-h-80 z-50 overflow-hidden overflow-y-scroll absolute w-full shadow-md bg-white h-auto rounded-lg mt-1">
-           <div v-for="movie in search.list" :key="movie" class="flex hover:bg-gray-200 cursor-pointer transition justify-start items-start w-full bg-slate-50 px-2 pt-2 pb-2">
+           <div v-for="movie in search.list" :key="movie">
+              <router-link @click="!isSearch" :to="{name: 'movie', params: {id: movie.id , movieRouteMatch: generateSlug(movie.title)}}" class="flex hover:bg-gray-200 cursor-pointer transition justify-start items-start w-full bg-slate-50 px-2 pt-2 pb-2">
                <span class="w-12 h-full block relative bg-gray-400 rounded-sm overflow-hidden">
                     <img v-if="movie.poster_path != null" :src="$movie_poster_path+movie.poster_path" class="w-12 h-16 block relative bg-slate-600">
                     <figure v-else class="w-12 h-16 block relative bg-slate-600"></figure>
@@ -16,6 +17,7 @@
                   <p v-if="movie.overview.length" class="text-xs text-gray-400">{{ movie.overview.substr(0, 50) + '...' }}</p>
                   <p v-else class="text-xs text-red-400">Sem descrição</p>
                </div>
+               </router-link>
            </div>
         </div>
         <div v-show="search.notfound" @click.stop class="flex flex-col max-h-80 z-50 overflow-hidden absolute w-full shadow-md bg-white h-auto rounded-lg mt-1">
@@ -27,6 +29,7 @@
 </template>
 
 <script>
+
 export default {
   name: 'SearchMovie',
 
@@ -58,6 +61,24 @@ export default {
            // CASO ERRO NA REQUISIÇÃO
            console.log(e);
         }
+    },
+    // GENERATE A SLUG FROM THE TITLE
+    generateSlug(str) {
+        str = str.replace(/^\s+|\s+$/g, ''); // trim
+        str = str.toLowerCase();
+        
+        // remove accents, swap ñ for n, etc
+        const from = 'àáäâèéëêìíïîòóöôùúüûñç·/_,:;';
+        const to = 'aaaaeeeeiiiioooouuuunc------';
+        for (let i = 0, l = from.length; i < l; i++) {
+            str = str.replace(new RegExp(from.charAt(i), 'g'), to.charAt(i));
+        }
+        
+        str = str.replace(/[^a-z0-9 -]/g, '') // remove invalid chars
+            .replace(/\s+/g, '-') // collapse whitespace and replace by -
+            .replace(/-+/g, '-'); // collapse dashes
+        
+        return str;
     }
   },
 

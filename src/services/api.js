@@ -5,15 +5,13 @@ import '../../node_modules/nprogress/nprogress.css'
 
 import nprogress from 'nprogress'
 
-const tokenPublic = '07eeda560637d3e164d0c1452c34cf5f';
-
 const instance = axios.create({
-    baseURL: 'https://api.themoviedb.org/3',
+    baseURL: process.env.VUE_APP_API,
     headers: {
         'Content-Type': 'application/json;charset=utf-8',
     },
     params: {
-       api_key: tokenPublic,
+       api_key: process.env.VUE_APP_API_KEY,
        language: 'pt-BR'
     }
 });
